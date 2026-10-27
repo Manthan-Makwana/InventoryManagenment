@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Practical08.Models.Product>
+
+    @{ 
+        Layout = null;
+    }
+
+    <h2>Inventory Management</h2>
+
+    <p>
+        @Html.ActionLink("Add New Product", "Create",
+            null, new { @class = "btn btn-primary" })
+    </p>
+
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Category</th>
+            <th>Action</th>
+        </tr>
+
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.Id</td>
+                <td>@p.Name</td>
+                <td>@p.Description</td>
+                <td>@p.Price</td>
+                <td>@p.Quantity</td>
+                <td>@p.Category</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit",
+                        new { id = p.Id }) |
+                    @Html.ActionLink("Delete", "Delete",
+                        new { id = p.Id })
+                </td>
+            </tr>
+        }
+    </table>
